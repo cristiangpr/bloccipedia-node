@@ -1,0 +1,11 @@
+{
+  "name": "bloccipedia",
+  "version": "1.0.0",
+  "description": "wiki site",
+  "main": "src/server.js",
+  "scripts": {
+    "test": "set NODE_ENV=test&& jasmine"
+  },
+  "author": "",
+  "license": "ISC"
+}
