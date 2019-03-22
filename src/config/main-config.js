@@ -14,7 +14,7 @@ module.exports = {
        app.use(express.static(path.join(__dirname, "..", "assets")));
        app.use(expressValidator());
        app.use(session({
-   secret: 'keyboard cat',
+  secret: process.env.cookieSecret,
    resave: false,
    saveUninitialized: false,
    cookie: { maxAge: 1.21e+9 } //set cookie to expire in 14 days
