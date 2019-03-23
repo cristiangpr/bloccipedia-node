@@ -62,12 +62,14 @@ describe("User", () => {
 
 // #5
       User.create({
+        username: "example",
         email: "user@example.com",
         password: "1234567890"
       })
       .then((user) => {
 
         User.create({
+            username: "example",
           email: "user@example.com",
           password: "nananananananananananananananana BATMAN!"
         })

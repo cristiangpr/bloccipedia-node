@@ -1,7 +1,9 @@
+const User = require("../db/models").User;
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
-const User = require("../db/models/user.js").User;
+
 const authHelper = require("../auth/helpers");
+
 
 module.exports = {
   init(app){
@@ -14,7 +16,7 @@ module.exports = {
     passport.use(new LocalStrategy({
       usernameField: "email"
     }, (email, password, done) => {
-          console.log(User);
+
       User.findOne({
         where: { email }
       })
@@ -36,7 +38,7 @@ module.exports = {
 
 // #7
     passport.deserializeUser((id, callback) => {
-      console.log(User);
+      console.log(User.email);
 
       User.findById(id)
       .then((user) => {
