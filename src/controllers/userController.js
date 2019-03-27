@@ -11,10 +11,11 @@ module.exports = {
     let newUser = {
       username: req.body.username,
       email: req.body.email,
+
       password: req.body.password,
       passwordConfirmation: req.body.passwordConfirmation
     };
-// #2
+  console.log(newUser);
     userQueries.createUser(newUser, (err, user) => {
       if(err){
         req.flash("error", err);
