@@ -9,5 +9,8 @@ const User = require("../../src/db/models").User;
 router.get("/wikis/index", wikiController.index);
 router.get("/wikis/new", wikiController.new);
 router.post("/wikis/create", wikiController.create);
-
+ router.get("/wikis/:id", wikiController.show);
+  router.post("/wikis/:id/destroy", wikiController.destroy);
+  router.get("/wikis/:id/edit", wikiController.edit);
+  router.post("/wikis/:id/update", wikiController.update);
 module.exports = router;
