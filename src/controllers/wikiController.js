@@ -14,7 +14,7 @@ module.exports = {
   new(req, res, next){
      const authorized = new Authorizer(req.user).new();
      if(authorized) {
-        
+
          res.render("wikis/new");
        } else {
          req.flash("notice", "You are not authorized to do that.");
@@ -39,7 +39,7 @@ module.exports = {
         res.redirect(500, "/wikis/new");
         console.log("newWiki:failed");
       } else {
-       markdown.toHTML(wiki.body);
+
        req.flash("notice", "Wiki created");
         res.redirect(303, `/wikis/${wiki.id}`);
         console.log(newWiki);
@@ -56,8 +56,8 @@ module.exports = {
       if(err || wiki == null){
         res.redirect(404, "/");
       } else {
-          markdown.toHTML(wiki.body);
-        res.render("wikis/show", {wiki});
+
+        res.render("wikis/show", {wiki, markdown});
       }
     });
   },
