@@ -1,4 +1,5 @@
 const User = require("./models").User;
+const Wiki = require("./models").Wiki;
 const bcrypt = require("bcryptjs");
 const sgMail = require('@sendgrid/mail');
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
@@ -66,5 +67,20 @@ downgradeUser(req, callback){
     callback(err);
   })
 },
+downgradeWikis(req, id){
+   return Wiki.all()
+   .then((wikis) => {
+     wikis.forEach((wiki) => {
+       if(wiki.userId == req.user.id && wiki.private == true){
+         wiki.update({
+           private: false
+         })
+       }
+     })
+   })
+   .catch((err) => {
+     callback(err);
+   })
+ }
 
 }

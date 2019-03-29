@@ -91,7 +91,16 @@ downgrade(req, res, next){
       res.redirect("/");
     }
   });
-}
+  userQueries.downgradeWikis(req, (err, user) => {
+      console.log("User Controller Post Downgrade-wikis")
+      if(err){
+        console.log('err', err)
+        req.flash("error", err);
+      } else {
+        console.log('Wikis Downgraded')
+      }
+    });
 
 
  }
+}
