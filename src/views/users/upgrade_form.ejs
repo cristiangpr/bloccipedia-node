@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <% include ../static/partials/head.ejs %>
+  </head>
+  <body>
+
+    <% include ../static/partials/navbar.ejs %>
+
+    <main class="container">
+
+      <% include ../static/partials/messages.ejs %>
+
+      <h1>Upgrade</h1>
+      <h2>Create and share private wikis by upgrading to a premium account!</h2>
+
+      <form action="<%= currentUser.id %>/upgrade" method="POST">
+    <script
+      src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+      data-key="pk_test_mk1RLKpDWUNb85qVONBBqJiE00UPgg6H8P"
+      data-amount="1500"
+      data-name="Bloccipedia"
+      data-description="Example charge"
+      data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+      data-locale="auto">
+    </script>
+  </form>
+  <h1>Downgrade</h1>
+  <h2>Revert to standard account</h2>
+
+    <form action="<%= currentUser.id %>/downgrade" method="post">
+      <button type="submit" class="btn btn-primary">Downgrade</button>
+    </form>
+    </main>
+
+    <% include ../static/partials/baseScripts.ejs %>
+
+  </body>
+</html>
