@@ -1,5 +1,5 @@
 module.exports = {
-  validatePosts(req, res, next) {/* validation definition */ },
+
 
   validateUsers(req, res, next) {
     if(req.method === "POST") {

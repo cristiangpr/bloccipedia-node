@@ -14,6 +14,10 @@
 
          </form>
       <p><%- markdown.toHTML(wiki.body) %></p>
+
+        <% if(currentUser.role == 'premium' || currentUser.role == 'admin'){ %>
+            <% include ../static/partials/collab_form.ejs %>
+              <% } %>
     </main>
 
     <% include ../static/partials/baseScripts.ejs %>
