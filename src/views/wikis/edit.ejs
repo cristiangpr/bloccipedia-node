@@ -22,15 +22,14 @@
 <!-- #3 -->
           <textarea rows="4" class="form-control" name="body" placeholder="Enter Body"><%= wiki.body %></textarea>
         </div>
-        <% if(currentUser.role == 'premium' || currentUser.role == 'admin'){ %>
-          <div class="form-group">
-            <label for="private">Will this be a private wiki?</label>
-            <select class="form-control" name="private">
-              <option value='true'>Yes, please make it Private</option>
-              <option selected value='false'>No, please make it Public</option>
-            </select>
-          </div>
-        <% } %>
+        <% if (wiki.private && currentUser && (currentUser.isAdmin() || (currentUser.isPremium() && currentUser.id == wiki.userId))) { %>
+                <div class="row">
+                  <label for="switch-2" class="mdl-switch mdl-js-switch mdl-js-ripple-effect">
+                    <input type="checkbox" id="switch-2" class="mdl-switch__input" name="private" checked="" value="true">
+                    <span class="mdl-switch__label">Make Public</span>
+                  </label>
+                </div>
+            <% } %>
         <button type="submit" class="btn btn-primary">Update</button>
       </form>
     </main>
